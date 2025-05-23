@@ -57,13 +57,15 @@ app.use('/api/reportes', reportesRoutes); // ✅ Reportes PDF
 // Ruta de prueba
 app.get('/', async (req, res) => {
     try {
-        const [result] = await pool.query('SELECT NOW() AS current_time');
-        res.send({ message: 'Servidor funcionando', server_time: result[0].current_time });
+        const [rows] = await pool.query('SELECT NOW() AS current_time');
+        res.send({ message: 'Servidor funcionando', server_time: rows[0].current_time });
     } catch (error) {
         console.error('Error en la base de datos:', error);
         res.status(500).json({ message: 'Error en la conexión con la base de datos', error });
     }
 });
+
+
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 5000;
