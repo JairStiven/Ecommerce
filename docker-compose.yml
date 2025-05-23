@@ -1,0 +1,71 @@
+version: '3.8'
+name: ecommerce
+
+services:
+
+  mysql:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile.mysql
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: ecommerce_db
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    restart: always
+    networks:
+      - networkName
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: ""
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    restart: always
+    networks:
+      - networkName
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile.backend
+    container_name: backend_app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_NAME: ecommerce_db
+      DB_USER: root
+      DB_PASSWORD: ""
+    restart: always
+    command: ["npx", "nodemon", "app.js"]
+    networks:
+      - networkName
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    container_name: frontend_app
+    ports:
+      - "5001:5000"
+    depends_on:
+      - backend
+    command: ["npm", "run", "dev"]
+    restart: always
+    networks:
+      - networkName
+
+networks:
+  networkName:
+    driver: bridge
