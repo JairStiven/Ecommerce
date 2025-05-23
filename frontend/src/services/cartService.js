@@ -1,0 +1,41 @@
+import axios from "axios";
+
+// Configura la instancia de axios con el token automáticamente
+const api = axios.create({
+  baseURL: "http://localhost:5000/api",
+});
+
+// Interceptor para agregar el token a cada solicitud
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Obtener el carrito del usuario autenticado
+export const getCart = async () => {
+  const res = await api.get("/cart");
+  return res.data;
+};
+
+// Añadir producto al carrito
+export const addToCart = async (producto_id, cantidad = 1) => {
+  await api.post("/cart", { producto_id, cantidad });
+};
+
+// Eliminar un producto del carrito
+export const removeFromCart = async (id) => {
+  await api.delete(`/cart/${id}`);
+};
+
+// Vaciar todo el carrito
+export const clearCart = async () => {
+  await api.delete("/cart");
+};
+
+export default api;
