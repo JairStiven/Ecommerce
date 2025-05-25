@@ -12,7 +12,7 @@ RUN npm install
 # Copiar el resto del código fuente
 COPY . .
 
-# Exponer el puerto 80
+
 EXPOSE 5000
 
 # Comando por defecto para nginx (ya viene configurado)

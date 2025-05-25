@@ -9,7 +9,7 @@ const Register = () => {
   useEffect(() => {
     const fetchBackgroundImage = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/config/fondo_login");
+        const response = await axios.get("/api/config/fondo_login");
         if (response.data && response.data.url) {
           setBackgroundImage(response.data.url);
         } else {

@@ -57,7 +57,7 @@ app.use('/api/reportes', reportesRoutes); // ✅ Reportes PDF
 // Ruta de prueba
 app.get('/', async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT NOW() AS current_time');
+        const [rows] = await pool.query('SELECT NOW() AS ahora');
         res.send({ message: 'Servidor funcionando', server_time: rows[0].current_time });
     } catch (error) {
         console.error('Error en la base de datos:', error);

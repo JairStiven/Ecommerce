@@ -22,7 +22,7 @@ const AdminNuevoProducts = () => {
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/categories");
+        const res = await axios.get("/api/categories");
         setCategorias(res.data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
@@ -33,7 +33,7 @@ const AdminNuevoProducts = () => {
       if (id) {
         setModoEdicion(true);
         try {
-          const res = await axios.get(`http://localhost:5000/api/products/${id}`);
+          const res = await axios.get(`/api/products/${id}`);
           const prod = res.data;
           setFormulario({
             nombre: prod.nombre,
@@ -65,10 +65,10 @@ const AdminNuevoProducts = () => {
     e.preventDefault();
     try {
       if (modoEdicion) {
-        await axios.put(`http://localhost:5000/api/products/${id}`, formulario);
+        await axios.put(`/api/products/${id}`, formulario);
         alert("Producto actualizado correctamente");
       } else {
-        await axios.post("http://localhost:5000/api/products", formulario);
+        await axios.post("/api/products", formulario);
         alert("Producto agregado correctamente");
       }
       navigate("/admin/productos");

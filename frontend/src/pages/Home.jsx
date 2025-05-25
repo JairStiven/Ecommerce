@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/categories")
+      .get("/api/categories")
       .then((response) => setCategories(response.data))
       .catch((error) => console.error("Error cargando categorías:", error));
   }, []);

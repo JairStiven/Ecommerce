@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Configura la instancia de axios con el token automáticamente
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "/api",
 });
 
 // Interceptor para agregar el token a cada solicitud

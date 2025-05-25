@@ -11,7 +11,7 @@ const Pago = () => {
   useEffect(() => {
     const fetchFondo = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/config/fondo_productos");
+        const response = await axios.get("/api/config/fondo_productos");
         if (response.data?.url) {
           setFondo(response.data.url);
         }

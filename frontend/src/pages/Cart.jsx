@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCart } from "../contexts/CartContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../styles/Cart.css";
+import "../styles/cart.css";
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart } = useCart();
@@ -18,7 +18,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchFondo = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/config/fondo_productos");
+        const response = await axios.get("/api/config/fondo_productos");
         if (response.data?.url) {
           setFondo(response.data.url);
         }

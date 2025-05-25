@@ -34,7 +34,7 @@ const UserProfile = () => {
 
     const fetchFondo = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/config/fondo_productos");
+        const response = await axios.get("/api/config/fondo_productos");
         if (response.data?.url) {
           setFondo(response.data.url);
         }
@@ -54,7 +54,7 @@ const UserProfile = () => {
   const handleGuardar = async () => {
     try {
       const res = await axios.put(
-        "http://localhost:5000/api/users/profile",
+        "/api/users/profile",
         {
           nombre: formData.nombre,
           direccion: formData.direccion,

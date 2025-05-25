@@ -1,8 +1,8 @@
 // src/services/authService.js
 import axios from "axios";
 
-const AUTH_API_URL = "http://localhost:5000/api/auth";
-const USER_API_URL = "http://localhost:5000/api/users";
+const AUTH_API_URL = "/api/auth";
+const USER_API_URL = "/api/users";
 
 // ==========================
 // 🔐 UTILIDADES DE LOCALSTORAGE

@@ -20,8 +20,8 @@ const Products = () => {
     const fetchProductosYCategorias = async () => {
       try {
         const [productosRes, categoriasRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/products"),
-          axios.get("http://localhost:5000/api/categories"),
+          axios.get("/api/products"),
+          axios.get("/api/categories"),
         ]);
         setProductos(productosRes.data);
         setCategorias(categoriasRes.data);
@@ -33,7 +33,7 @@ const Products = () => {
     const fetchFondo = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/config/fondo_productos"
+          "/api/config/fondo_productos"
         );
         if (response.data?.url) {
           setFondo(response.data.url);

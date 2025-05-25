@@ -24,7 +24,7 @@ const AdminFormularioProducto = () => {
 
   // Cliente Axios configurado
   const api = axios.create({
-    baseURL: "http://localhost:5000/api",
+    baseURL: "/api",
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -33,7 +33,7 @@ const AdminFormularioProducto = () => {
   useEffect(() => {
     // Cargar categorías (endpoint público)
     axios
-      .get("http://localhost:5000/api/categories")
+      .get("/api/categories")
       .then((res) => setCategorias(res.data))
       .catch((err) => console.error("Error al cargar categorías", err));
 

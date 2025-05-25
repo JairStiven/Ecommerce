@@ -20,7 +20,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/products/${id}`);
+        const response = await axios.get(`/api/products/${id}`);
         setProducto(response.data);
       } catch (error) {
         console.error("Error al obtener detalles del producto:", error);
@@ -29,7 +29,7 @@ const ProductDetails = () => {
 
     const fetchFondo = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/config/fondo_productos");
+        const response = await axios.get("/api/config/fondo_productos");
         if (response.data?.url) {
           setFondo(response.data.url);
         }
