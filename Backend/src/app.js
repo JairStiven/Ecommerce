@@ -3,13 +3,31 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const pool = require('./config/db.js');
-
-dotenv.config();
-
 const app = express();
 
-// Middlewares
-app.use(cors());
+// CORS explícito para los orígenes de Codespaces
+const allowedOrigins = [
+  'https://legendary-enigma-r47r744j75j93xq4-5001.app.github.dev',
+  'https://legendary-enigma-r47r744j75j93xq4-5000.app.github.dev'
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
+app.use((req, res, next) => {
+  console.log('Origin recibido:', req.headers.origin);
+  next();
+});
+dotenv.config();
+
 app.use(express.json());
 app.use(morgan('dev'));
 
@@ -21,10 +39,10 @@ const orderRoutes = require('./routes/orderRoutes.js');
 const paymentRoutes = require('./routes/paymentRoutes.js');
 const cartRoutes = require('./routes/cartRoutes.js');
 const orderDetailsRoutes = require('./routes/orderDetailsRoutes.js');
-const categoryRoutes = require('./routes/categoryRoutes.js'); // ✅ Rutas de categorías
-const configRoutes = require('./routes/configRoutes.js');     // ✅ Ruta de configuración
-const adminRoutes = require('./routes/adminRoutes.js');       // ✅ Ruta de administrador
-const reportesRoutes = require('./routes/reportesRoutes.js'); // ✅ Ruta de reportes en PDF
+const categoryRoutes = require('./routes/categoryRoutes.js');
+const configRoutes = require('./routes/configRoutes.js');
+const adminRoutes = require('./routes/adminRoutes.js');
+const reportesRoutes = require('./routes/reportesRoutes.js');
 
 // Verificación de rutas cargadas
 console.log({
@@ -52,20 +70,18 @@ app.use('/api/order-details', orderDetailsRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/config', configRoutes);
 app.use('/api/admin', adminRoutes);
-app.use('/api/reportes', reportesRoutes); // ✅ Reportes PDF
+app.use('/api/reportes', reportesRoutes);
 
 // Ruta de prueba
 app.get('/', async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT NOW() AS ahora');
-        res.send({ message: 'Servidor funcionando', server_time: rows[0].current_time });
+        res.send({ message: 'Servidor funcionando', server_time: rows[0].ahora });
     } catch (error) {
         console.error('Error en la base de datos:', error);
         res.status(500).json({ message: 'Error en la conexión con la base de datos', error });
     }
 });
-
-
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 5000;

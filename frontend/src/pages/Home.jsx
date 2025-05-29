@@ -14,9 +14,9 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("/api/categories")
+      .get(`${import.meta.env.VITE_API_URL}/api/categories`)
       .then((response) => setCategories(response.data))
-      .catch((error) => console.error("Error cargando categorías:", error));
+      
   }, []);
 
   const handleCategoryClick = (categoryId) => {

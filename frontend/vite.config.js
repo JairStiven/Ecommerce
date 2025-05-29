@@ -7,12 +7,12 @@ export default defineConfig({
   server: {
      host: '0.0.0.0',      // <- ¡Importante!
     port: 5000,           // <- Puerto igual al que expones en Dockerfile
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true,
-        secure: false,
-      },
-    },
+    //proxy: {
+      //'/api': {
+        //target: 'https://localhost:5000',
+        //changeOrigin: true,
+        //secure: false,
+      //},
+    //},
   },
-});
+});2
