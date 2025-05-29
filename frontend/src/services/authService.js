@@ -1,8 +1,9 @@
 // src/services/authService.js
 import axios from "axios";
 
-const AUTH_API_URL = "/api/auth";
-const USER_API_URL = "/api/users";
+const API_URL = import.meta.env.VITE_API_URL;
+const AUTH_API_URL = `${API_URL}/api/auth`;
+const USER_API_URL = `${API_URL}/api/users`;
 
 // ==========================
 // 🔐 UTILIDADES DE LOCALSTORAGE
