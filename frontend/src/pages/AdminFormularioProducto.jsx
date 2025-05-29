@@ -4,6 +4,8 @@ import axios from "axios";
 import { useAuth } from "../contexts/AuthContext";
 import "../styles/AdminFormularioProducto.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "/api";
+
 const AdminFormularioProducto = () => {
   const { id } = useParams(); // Si hay id, estamos en edición
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ const AdminFormularioProducto = () => {
 
   // Cliente Axios configurado
   const api = axios.create({
-    baseURL: "/api",
+    baseURL: API_URL,
     headers: {
       Authorization: `Bearer ${token}`,
     },

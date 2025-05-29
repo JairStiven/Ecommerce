@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import "../styles/AdminProducts.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "/api";
+
 const AdminProducts = () => {
   const [productos, setProductos] = useState([]);
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ const AdminProducts = () => {
   const token = user?.token || localStorage.getItem("token");
 
   const api = axios.create({
-    baseURL: "/api",
+    baseURL: API_URL,
     headers: { Authorization: `Bearer ${token}` },
   });
 

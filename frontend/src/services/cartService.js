@@ -1,8 +1,9 @@
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL || "/api";
 // Configura la instancia de axios con el token automáticamente
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: API_URL,
 });
 
 // Interceptor para agregar el token a cada solicitud

@@ -4,6 +4,8 @@ import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
 import "../styles/AdminVerUsuarios.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "/api";
+
 const AdminVerUsuarios = () => {
   const { user, token } = useAuth();
   const [usuarios, setUsuarios] = useState([]);
@@ -17,7 +19,7 @@ const AdminVerUsuarios = () => {
   const [mensaje, setMensaje] = useState("");
 
   const api = axios.create({
-    baseURL: "/api",
+    baseURL: API_URL,
     headers: { Authorization: `Bearer ${token}` },
   });
 

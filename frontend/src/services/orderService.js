@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getToken } from "./authService";
 
+
 export const createOrder = async (cart, metodoPago = "WhatsApp") => {
   const token = getToken();
 
