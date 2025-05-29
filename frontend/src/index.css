@@ -38,6 +38,9 @@ a {
 a:hover {
   color: var(--color-red);
 }
+.nav-icon {
+  filter: invert(1);
+}
 
 /* Botones */
 button {

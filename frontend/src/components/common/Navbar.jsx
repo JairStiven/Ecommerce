@@ -35,7 +35,7 @@ const Navbar = () => {
             <>
               <button onClick={logout} className="logout-btn">
                 <img
-                  src="https://i.imgur.com/bEqC4Ob.png"
+                  src="/icons/dejar.png"
                   alt="Cerrar Sesión"
                   className="nav-icon"
                 />
@@ -46,17 +46,13 @@ const Navbar = () => {
             <>
               {/* Navbar para usuarios normales o no logueados */}
               <Link to="/" onClick={toggleMenu}>
-                <img
-                  src="https://i.imgur.com/8GeTO0L.png"
-                  alt="Inicio"
-                  className="nav-icon"
-                />
+                <img src="/icons/hogar.png" alt="Inicio" className="nav-icon" />
                 Inicio
               </Link>
 
               <button onClick={handleProductsClick} className="nav-button">
                 <img
-                  src="https://i.imgur.com/h1mqgQ5.png"
+                  src="/icons/carrito-de-compras.png"
                   alt="Productos"
                   className="nav-icon"
                 />
@@ -67,7 +63,7 @@ const Navbar = () => {
                 <>
                   <Link to="/profile" onClick={toggleMenu}>
                     <img
-                      src="https://i.imgur.com/JG0ePx3.png"
+                      src="/icons/usuario.png"
                       alt="Perfil"
                       className="nav-icon"
                     />
@@ -75,7 +71,7 @@ const Navbar = () => {
                   </Link>
                   <button onClick={logout} className="logout-btn">
                     <img
-                      src="https://i.imgur.com/bEqC4Ob.png"
+                      src="/icons/dejar.png"
                       alt="Cerrar Sesión"
                       className="nav-icon"
                     />
@@ -85,7 +81,7 @@ const Navbar = () => {
               ) : (
                 <Link to="/login" onClick={toggleMenu}>
                   <img
-                    src="https://i.imgur.com/Om2TV1n.png"
+                    src="/icons/entrada.png"
                     alt="Iniciar Sesión"
                     className="nav-icon"
                   />
