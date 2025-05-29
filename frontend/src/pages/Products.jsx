@@ -20,8 +20,8 @@ const Products = () => {
     const fetchProductosYCategorias = async () => {
       try {
         const [productosRes, categoriasRes] = await Promise.all([
-          axios.get("/api/products"),
-          axios.get("/api/categories"),
+          axios.get(`${import.meta.env.VITE_API_URL}/api/products`),
+          axios.get(`${import.meta.env.VITE_API_URL}/api/categories`),
         ]);
         setProductos(productosRes.data);
         setCategorias(categoriasRes.data);
@@ -33,7 +33,7 @@ const Products = () => {
     const fetchFondo = async () => {
       try {
         const response = await axios.get(
-          "/api/config/fondo_productos"
+          `${import.meta.env.VITE_API_URL}/api/config/fondo_productos`
         );
         if (response.data?.url) {
           setFondo(response.data.url);

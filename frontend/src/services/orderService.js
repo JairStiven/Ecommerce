@@ -5,7 +5,7 @@ export const createOrder = async (cart, metodoPago = "WhatsApp") => {
   const token = getToken();
 
   const response = await axios.post(
-    "/api/orders/create",
+    `${import.meta.env.VITE_API_URL}/api/orders/create`,
     { cart, metodoPago },
     {
       headers: {

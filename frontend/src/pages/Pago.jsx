@@ -11,7 +11,7 @@ const Pago = () => {
   useEffect(() => {
     const fetchFondo = async () => {
       try {
-        const response = await axios.get("/api/config/fondo_productos");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/config/fondo_productos`);
         if (response.data?.url) {
           setFondo(response.data.url);
         }
@@ -42,7 +42,7 @@ const Pago = () => {
       }));
 
       const response = await axios.post(
-        "/api/orders/create",
+        `${import.meta.env.VITE_API_URL}/api/orders/create`,
         {
           cart: cartConProductoId,
           metodoPago: "WhatsApp",

@@ -33,7 +33,7 @@ const AdminFormularioProducto = () => {
   useEffect(() => {
     // Cargar categorías (endpoint público)
     axios
-      .get("/api/categories")
+      .get(`${import.meta.env.VITE_API_URL}/api/categories`)
       .then((res) => setCategorias(res.data))
       .catch((err) => console.error("Error al cargar categorías", err));
 

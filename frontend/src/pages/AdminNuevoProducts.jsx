@@ -22,7 +22,7 @@ const AdminNuevoProducts = () => {
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const res = await axios.get("/api/categories");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/categories`);
         setCategorias(res.data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
@@ -68,7 +68,7 @@ const AdminNuevoProducts = () => {
         await axios.put(`/api/products/${id}`, formulario);
         alert("Producto actualizado correctamente");
       } else {
-        await axios.post("/api/products", formulario);
+        await axios.post(`${import.meta.env.VITE_API_URL}/api/products`, formulario);
         alert("Producto agregado correctamente");
       }
       navigate("/admin/productos");

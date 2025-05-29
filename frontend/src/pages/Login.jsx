@@ -31,7 +31,7 @@ const Login = () => {
   useEffect(() => {
     const fetchBackgroundImage = async () => {
       try {
-        const response = await axios.get("/api/config/fondo_login");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/config/fondo_login`);
         setBackgroundImage(response.data?.url || "/default-background.jpg");
       } catch {
         setBackgroundImage("/default-background.jpg");
