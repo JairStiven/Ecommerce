@@ -5,7 +5,7 @@ import axios from "axios";
 import "../styles/AdminVerUsuarios.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "/api";
-
+  
 const AdminVerUsuarios = () => {
   const { user, token } = useAuth();
   const [usuarios, setUsuarios] = useState([]);
@@ -25,7 +25,7 @@ const AdminVerUsuarios = () => {
 
   const cargarUsuarios = async () => {
     try {
-      const res = await api.get("/users");
+      const res = await api.get("/api/users");
       setUsuarios(res.data);
     } catch (error) {
       console.error("Error al cargar usuarios", error);

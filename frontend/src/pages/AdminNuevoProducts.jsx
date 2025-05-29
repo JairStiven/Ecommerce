@@ -22,7 +22,7 @@ const AdminNuevoProducts = () => {
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/categories`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/categories`);
         setCategorias(res.data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);

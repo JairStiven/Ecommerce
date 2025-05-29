@@ -51,7 +51,7 @@ services:
     command: ["npx", "nodemon", "app.js"]
     networks:
       - networkName
-
+ 
   frontend:
     build:
       context: ./frontend

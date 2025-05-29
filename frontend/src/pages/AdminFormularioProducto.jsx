@@ -42,7 +42,7 @@ const AdminFormularioProducto = () => {
     if (id) {
       // Cargar datos del producto para editar
       api
-        .get(`/products/${id}`)
+        .get(`/api/products/${id}`)
         .then((res) => setProducto(res.data))
         .catch((err) => console.error("Error al cargar producto", err));
     }
@@ -56,10 +56,10 @@ const AdminFormularioProducto = () => {
     e.preventDefault();
     try {
       if (id) {
-        await api.put(`/products/${id}`, producto);
+        await api.put(`/api/products/${id}`, producto);
         alert("✅ Producto actualizado correctamente");
       } else {
-        await api.post("/products", producto);
+        await api.post("/api/products", producto);
         alert("✅ Producto creado correctamente");
       }
       navigate("/admin/productos");

@@ -22,7 +22,7 @@ const AdminProducts = () => {
   useEffect(() => {
     const fetchProductos = async () => {
       try {
-        const res = await api.get("/products");
+        const res = await api.get("api/products");
         setProductos(res.data);
       } catch (error) {
         console.error("Error al obtener productos", error);
@@ -34,7 +34,7 @@ const AdminProducts = () => {
   const handleEliminar = async (id) => {
     if (window.confirm("¿Estás seguro de eliminar este producto?")) {
       try {
-        await api.delete(`/products/${id}`);
+        await api.delete(`api/products/${id}`);
         setProductos((prev) => prev.filter((p) => p.id !== id));
       } catch (error) {
         console.error("Error al eliminar producto", error);
