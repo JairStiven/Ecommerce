@@ -8,7 +8,8 @@ const app = express();
 // CORS explícito para los orígenes de Codespaces
 const allowedOrigins = [
   'https://legendary-enigma-r47r744j75j93xq4-5001.app.github.dev',
-  'https://legendary-enigma-r47r744j75j93xq4-5000.app.github.dev'
+  'https://legendary-enigma-r47r744j75j93xq4-5000.app.github.dev',
+  '52.233.94.15'
 ];
 
 app.use(cors({
