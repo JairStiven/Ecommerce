@@ -99,8 +99,9 @@ const UserProfile = () => {
         {mensaje && <p className="mensaje">{mensaje}</p>}
 
         <div className="form-group">
-          <label>Nombre:</label>
+          <label htmlFor="nombre">Nombre:</label>
           <input
+            id="nombre"
             type="text"
             name="nombre"
             value={formData.nombre}
@@ -110,8 +111,9 @@ const UserProfile = () => {
         </div>
 
         <div className="form-group">
-          <label>Email:</label>
+          <label htmlFor="email">Email:</label>
           <input
+            id="email"
             type="email"
             name="email"
             value={formData.email}
@@ -120,8 +122,9 @@ const UserProfile = () => {
         </div>
 
         <div className="form-group">
-          <label>Dirección:</label>
+          <label htmlFor="direccion">Dirección:</label>
           <input
+            id="direccion"
             type="text"
             name="direccion"
             value={formData.direccion}
@@ -131,8 +134,9 @@ const UserProfile = () => {
         </div>
 
         <div className="form-group">
-          <label>Teléfono:</label>
+          <label htmlFor="telefono">Teléfono:</label>
           <input
+            id="telefono"
             type="text"
             name="telefono"
             value={formData.telefono}
