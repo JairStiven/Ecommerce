@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -22,6 +23,10 @@ const PrivateRoute = ({ allowedRoles }) => {
 
   // Si no se definen allowedRoles o el usuario tiene un rol permitido, renderizar el contenido
   return <Outlet />;
+};
+
+PrivateRoute.propTypes = {
+  allowedRoles: PropTypes.arrayOf(PropTypes.string), // <-- validación agregada
 };
 
 export default PrivateRoute;
