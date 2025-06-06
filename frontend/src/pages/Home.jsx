@@ -77,11 +77,18 @@ const Home = () => {
         <h2 className="categories-title">NUESTRAS CATEGORÍAS</h2>
         <div className="categories-grid">
           {categories.map((category) => (
-            <div
-              key={category.id}
-              className="category-card"
-              onClick={() => handleCategoryClick(category.id)}
-            >
+              <div
+                key={category.id}
+                className="category-card"
+                role="button"
+                tabIndex={0}
+                onClick={() => handleCategoryClick(category.id)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleCategoryClick(category.id);
+                  }
+                }}
+              >
               <img src={category.imagen} alt={category.nombre} />
               <p>{category.nombre}</p>
             </div>
