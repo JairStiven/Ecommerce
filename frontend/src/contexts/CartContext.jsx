@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import {
   getCart,
   addToCart as apiAddToCart,
@@ -9,7 +10,7 @@ import {
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]); // valor inicial válido
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -64,6 +65,10 @@ export const CartProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
+};
+
+CartProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export const useCart = () => useContext(CartContext);
