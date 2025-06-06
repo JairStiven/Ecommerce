@@ -70,9 +70,10 @@ const RegisterForm = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <label>Nombre</label>
+            <label htmlFor="nombre">Nombre</label>
             <input
               type="text"
+              id="nombre"
               name="nombre"
               value={formData.nombre}
               onChange={handleChange}
@@ -82,9 +83,10 @@ const RegisterForm = () => {
           </div>
 
           <div className="input-group">
-            <label>Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
+              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -94,21 +96,24 @@ const RegisterForm = () => {
           </div>
 
           <div className="input-group">
-            <label>Contraseña</label>
+            <label htmlFor="password">Contraseña</label>
             <input
               type="password"
+              id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               placeholder="Crea una contraseña"
+              autoComplete="new-password"
               required
             />
           </div>
 
           <div className="input-group">
-            <label>Dirección</label>
+            <label htmlFor="direccion">Dirección</label>
             <input
               type="text"
+              id="direccion"
               name="direccion"
               value={formData.direccion}
               onChange={handleChange}
@@ -118,9 +123,10 @@ const RegisterForm = () => {
           </div>
 
           <div className="input-group">
-            <label>Teléfono</label>
+            <label htmlFor="telefono">Teléfono</label>
             <input
               type="text"
+              id="telefono"
               name="telefono"
               value={formData.telefono}
               onChange={handleChange}
