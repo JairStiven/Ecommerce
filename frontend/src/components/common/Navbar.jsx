@@ -38,16 +38,14 @@ const Navbar = () => {
                   src="/icons/dejar.png"
                   alt="Cerrar Sesión"
                   className="nav-icon"
-                />
-                Cerrar Sesión
+                />Cerrar Sesión
               </button>
             </>
           ) : (
             <>
               {/* Navbar para usuarios normales o no logueados */}
               <Link to="/" onClick={toggleMenu}>
-                <img src="/icons/hogar.png" alt="Inicio" className="nav-icon" />
-                Inicio
+                <img src="/icons/hogar.png" alt="Inicio" className="nav-icon" />Inicio
               </Link>
 
               <button onClick={handleProductsClick} className="nav-button">
@@ -55,8 +53,7 @@ const Navbar = () => {
                   src="/icons/carrito-de-compras.png"
                   alt="Productos"
                   className="nav-icon"
-                />
-                Productos
+                />Productos
               </button>
 
               {user ? (
@@ -66,16 +63,14 @@ const Navbar = () => {
                       src="/icons/usuario.png"
                       alt="Perfil"
                       className="nav-icon"
-                    />
-                    Perfil
+                    />Perfil
                   </Link>
                   <button onClick={logout} className="logout-btn">
                     <img
                       src="/icons/dejar.png"
                       alt="Cerrar Sesión"
                       className="nav-icon"
-                    />
-                    Cerrar Sesión
+                    />Cerrar Sesión
                   </button>
                 </>
               ) : (
@@ -84,8 +79,7 @@ const Navbar = () => {
                     src="/icons/entrada.png"
                     alt="Iniciar Sesión"
                     className="nav-icon"
-                  />
-                  Iniciar Sesión
+                  />Iniciar Sesión
                 </Link>
               )}
             </>
