@@ -11,7 +11,7 @@ const allowedOrigins = [
   'https://legendary-enigma-r47r744j75j93xq4-5000.app.github.dev',
   '52.233.94.15'
 ];
-
+ 
 app.use(cors({
   origin: function(origin, callback) {
     if (!origin) return callback(null, true);
