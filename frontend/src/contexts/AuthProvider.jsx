@@ -1,4 +1,3 @@
-// src/contexts/AuthProvider.jsx
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
@@ -8,6 +7,7 @@ import {
   registerUser,
   logoutUser,
 } from "../services/authService";
+import PropTypes from "prop-types"; // <-- Añadido para validación de props
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
@@ -92,4 +92,9 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+// Validación de props (para SonarQube y buenas prácticas)
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
