@@ -9,8 +9,8 @@ const app = express();
 const allowedOrigins = [
   'https://legendary-enigma-r47r744j75j93xq4-5001.app.github.dev',
   'https://legendary-enigma-r47r744j75j93xq4-5000.app.github.dev',
-  'https://52.233.94.15:5001',
-  'https://52.233.94.15:5000'
+  'http://52.233.94.15:5001',
+  'http://52.233.94.15:5000'
 ];
  
 app.use(cors({
