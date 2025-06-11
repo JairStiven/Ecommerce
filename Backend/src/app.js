@@ -7,10 +7,7 @@ const app = express();
 
 // CORS explícito para los orígenes de Codespaces
 const allowedOrigins = [
-  'https://legendary-enigma-r47r744j75j93xq4-5001.app.github.dev',
-  'https://legendary-enigma-r47r744j75j93xq4-5000.app.github.dev',
-  'http://52.233.94.15:5001',
-  'http://52.233.94.15:5000'
+  'http://yeyevoo.duckdns.org'
 ];
  
 app.use(cors({
@@ -86,7 +83,7 @@ app.get('/', async (req, res) => {
 });
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+const PORT = process.env.PORT;
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`✅ Servidor corriendo en http://0.0.0.0:${PORT}`);
 });

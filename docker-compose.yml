@@ -1,64 +1,79 @@
-version: '3.8'
-
 services:
- 
   mysql:
-    image: jairstiven/ecommerce-mysql
-    container_name: mysql_db
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile.mysql
+    container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ROOT_PASSWORD: 123456789
       MYSQL_DATABASE: ecommerce_db
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - "3306:3306"
     restart: always
     networks:
-      - networkName
+      - ecommerce_net
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin
     environment:
       PMA_HOST: mysql
+      PMA_PORT: 3306
       PMA_USER: root
-      PMA_PASSWORD: ""
+      PMA_PASSWORD: 123456789
     ports:
       - "8080:80"
+    restart: always
     depends_on:
       - mysql
-    restart: always
     networks:
-      - networkName
+      - ecommerce_net
 
   backend:
-    image: jairstiven/ecommerce-backend
-    container_name: backend_app
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile.backend
+    container_name: backend
     ports:
-      - "5000:5000"
+      - "5001:5001"
+    env_file:
+      - ./Backend/.env
+    restart: always
     depends_on:
       - mysql
-    environment:
-      DB_HOST: mysql
-      DB_NAME: ecommerce_db
-      DB_USER: root
-      DB_PASSWORD: ""
-    restart: always
-    command: ["npx", "nodemon", "app.js"]
     networks:
-      - networkName
- 
+      - ecommerce_net
+
   frontend:
-    image: jairstiven/ecommerce-frontend
-    container_name: frontend_app
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    container_name: frontend
     ports:
-      - "5001:5000"
+      - "5000:5000"
+    env_file:
+      - ./frontend/.env
+    restart: always
     depends_on:
       - backend
-    command: ["npm", "run", "dev"]
-    restart: always
     networks:
-      - networkName
+      - ecommerce_net
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - ecommerce_net
 
 networks:
-  networkName:
+  ecommerce_net:
     driver: bridge

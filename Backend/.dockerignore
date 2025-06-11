@@ -1,0 +1,17 @@
+node_modules
+npm-debug.log
+Dockerfile.backend
+Dockerfile.mysql
+.dockerignore
+.git
+.gitignore
+.env
+dist
+coverage
+.vscode
+*.log
+*.md
+.idea
+.eslintcache
+*.test.js
+*.spec.js

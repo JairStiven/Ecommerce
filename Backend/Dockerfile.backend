@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 5000
 
 # Comando para arrancar el backend
-CMD ["npx nodemon", "src/app.js"]
+CMD ["npx", "nodemon", "src/index.js"]
